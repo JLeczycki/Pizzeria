@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Pizzeria.Models.Ingredient>
+@{
+    ViewBag.Title = "ingredientsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ingredientsList</h2>
+
+<ul>
+   @foreach (var ingredient in Model)
+   {
+       <li>
+           <div class="name">
+               @ingredient.Name
+           </div>
+           <div class="price">
+               @ingredient.Price
+           </div>
+       </li>
+   }
+</ul>

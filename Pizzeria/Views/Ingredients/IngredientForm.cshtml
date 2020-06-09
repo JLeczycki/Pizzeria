@@ -1,0 +1,24 @@
+﻿@using System.Web.Mvc.Html
+@model Pizzeria.ViewModels.IngredientFormViewModel
+@{
+    ViewBag.Title = "IngredientForm";
+}
+
+<h2>IngredientForm</h2>
+@using (Html.BeginForm(Model.Action, "Ingredients"))
+{
+    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+    @Html.HiddenFor(x => x.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Price)
+        @Html.TextBoxFor(x => x.Price, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(x => x.Price)
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Save</button>
+}
