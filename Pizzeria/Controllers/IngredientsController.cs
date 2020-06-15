@@ -57,5 +57,47 @@ namespace Pizzeria.Controllers
 
             return View(ingredientsList);
         }
+
+        /// <summary>
+        /// EditIngredient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>View for ingredient form</returns>
+        public ActionResult EditIngredient(int id)
+        {
+            var ingredient = _unitOfWork.IngredientsRepository.GetIngredient(id);
+
+            if (ingredient == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new IngredientFormViewModel
+            {
+                Name = ingredient.Name,
+                Price = ingredient.Price
+            };
+
+            return View("IngredientForm", viewModel);
+        }
+
+        /// <summary>
+        /// Removes ingredient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Ingredient list after remove</returns>
+        public ActionResult RemoveIngredient(int id)
+        {
+            var inggredient = _unitOfWork.IngredientsRepository.GetIngredient(id);
+
+            if (inggredient == null)
+            {
+                return HttpNotFound();
+            }
+
+            _unitOfWork.IngredientsRepository.Remove(inggredient);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("IngredientsList", "Ingredients");
+        }
     }
 }

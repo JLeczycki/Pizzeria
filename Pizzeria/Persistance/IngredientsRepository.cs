@@ -5,6 +5,9 @@ using Pizzeria.Models;
 
 namespace Pizzeria.Persistance
 {
+    /// <summary>
+    /// IngredientsRepository
+    /// </summary>
     public class IngredientsRepository : IIngredientsRepository
     {
         /// <summary>
@@ -47,6 +50,15 @@ namespace Pizzeria.Persistance
         public IEnumerable<Ingredient> GetIngredients()
         {
             return _context.Ingredients.ToList();
+        }
+
+        /// <summary>
+        /// Removes ingredient
+        /// </summary>
+        /// <param name="ingredient"></param>
+        public void Remove(Ingredient ingredient)
+        {
+            _context.Ingredients.Remove(ingredient);
         }
     }
 }

@@ -9,13 +9,19 @@
 <ul>
    @foreach (var ingredient in Model)
    {
-       <li>
-           <div class="name">
-               @ingredient.Name
-           </div>
-           <div class="price">
-               @ingredient.Price
-           </div>
-       </li>
+    <li>
+        <ul class="name">
+            @ingredient.Name
+        </ul>
+        <ul class="price">
+            @ingredient.Price$
+        </ul>
+        <a href="@Url.Action("EditIngredient", "Ingredients", new { id = ingredient.Id })">
+            Edit
+        </a> 
+        <a href="@Url.Action("RemoveIngredient", "Ingredients", new { id = ingredient.Id })">
+            Remove
+        </a>
+    </li>
    }
 </ul>

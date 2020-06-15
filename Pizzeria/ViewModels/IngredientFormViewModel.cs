@@ -40,8 +40,7 @@ namespace Pizzeria.ViewModels
             get
             {
                 Expression<Func<IngredientsController, ActionResult>> create = x => x.Create(this);
-
-                var action = create;
+                var action =  create;
                 return (action.Body as MethodCallExpression)?.Method.Name;
             }
         }

@@ -26,5 +26,11 @@ namespace Pizzeria.Interfaces
         /// </summary>
         /// <returns>IEnumerable&lt;Ingredient&gt;.</returns>
         IEnumerable<Ingredient> GetIngredients();
+
+        /// <summary>
+        /// Removes ingredient
+        /// </summary>
+        /// <param name="ingredient"></param>
+        void Remove(Ingredient ingredient);
     }
 }
